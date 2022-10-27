@@ -33,3 +33,11 @@ html {
     max-width: 90%;
     margin: 0 auto;
   }
+
+  .cardWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 8rem; */
+    min-height: calc(100vh - 140vh);
+}

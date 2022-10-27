@@ -1,54 +1,98 @@
 import "./App.css";
 import Home from "./pages/Home/Home";
 import Navigation from "./components/shared/Navigation/Navigation";
-import Register from "./pages/Register/Register";
-import { createBrowserRouter } from "react-router-dom";
-import Login from "./pages/Login/Login";
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import Authenticate from "./pages/Authenticate/Authenticate";
+import Activate from "./pages/Activate/Activate";
+import Rooms from "./pages/Rooms/Rooms";
+import { useSelector } from "react-redux";
+
+
+const GuestRoute = ({ children }) => {
+  const { isAuth } = useSelector((state) => state.auth);
+  return (
+    <>
+      {isAuth ? (
+        <Navigate to="/rooms" replace={true} />
+      ) : (
+        <>
+          <Navigation />
+          {children}
+        </>
+      )}
+    </>
+  );
+};
+
+const SemiProtectedRoute = ({ children }) => {
+  const { user, isAuth } = useSelector((state) => state.auth);
+  return (
+    <>
+      {!isAuth ? (
+        <Navigate to="/" replace={true} />
+      ) : isAuth && !user.activated ? (
+        <>
+          <Navigation />
+          {children}
+        </>
+      ) : (
+        <Navigate to="/rooms" replace={true} />
+      )}
+    </>
+  );
+};
+
+const ProtectedRoute = ({ children }) => {
+  const { user, isAuth } = useSelector((state) => state.auth);
+  return (
+    <>
+      {!isAuth ? (
+        <Navigate to="/" replace={true} />
+      ) : isAuth && !user.activated ? (
+        <Navigate to="/activate" replace={true} />
+      ) : (
+        <>
+          <Navigation />
+          {children}
+        </>
+      )}
+    </>
+  );
+};
 
 const App = createBrowserRouter([
   {
     path: "/",
     element: (
-      <>
-        <Navigation />
+      <GuestRoute>
         <Home />
-      </>
+      </GuestRoute>
     ),
   },
   {
-    path: "/register",
+    path: "/authenticate",
     element: (
-      <>
-        <Navigation />
-        <Register />
-      </>
+      <GuestRoute>
+        <Authenticate />
+      </GuestRoute>
     ),
   },
   {
-    path: "/login",
+    path: "/activate",
     element: (
-      <>
-        <Navigation />
-        <Login />
-      </>
+      <SemiProtectedRoute>
+        <Activate />
+      </SemiProtectedRoute>
+    ),
+  },
+  {
+    path: "/rooms",
+    element: (
+      <ProtectedRoute>
+        <Rooms />
+      </ProtectedRoute>
     ),
   },
 ]);
-
-// function App() {
-//   return (
-//     <BrowserRouter>
-//     <Navigation />
-//       <Switch>
-//         <Route path="/" exact>
-//           <Home />
-//         </Route>
-//         <Route path="/register" exact>
-//           <Register />
-//         </Route>
-//       </Switch>
-//     </BrowserRouter>
-//   );
-// }
 
 export default App;
