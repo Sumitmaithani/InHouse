@@ -6,35 +6,55 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setAvatar } from "../../../store/activateSlice";
 import { activate } from "../../../http";
-import {setAuth} from "../../../store/authSlice";
+import { setAuth } from "../../../store/authSlice";
+import Loader from "../../../components/shared/Loader/Loader";
+import { toast } from "react-toastify";
 
 const StepAvatar = ({ onClick }) => {
   const dispatch = useDispatch();
 
   const { name, avatar } = useSelector((state) => state.activate);
   const [img, setImg] = useState("/images/dp.png");
+  const [loading, setLoading] = useState(false);
 
   function captureImg(e) {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onloadend = function () {
+    reader.onloadend = async function () {
       setImg(reader.result);
       dispatch(setAvatar(reader.result));
     };
   }
 
   async function submit() {
+    if(!name || !avatar){
+      return toast.error('Please upload your photo!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
+    setLoading(true);
     try {
       const { data } = await activate({ name, avatar });
-      if (data.auth){
+      if (data.auth) {
         dispatch(setAuth(data));
       }
       console.log(data);
     } catch (err) {
-      console.log("this is",err);
+      console.log(err);
+    } finally {
+      setLoading(false);
     }
   }
+
+  if (loading) return <Loader message="Activaion in progress.." />;
   return (
     <>
       <div className={styles.cardWrapper}>

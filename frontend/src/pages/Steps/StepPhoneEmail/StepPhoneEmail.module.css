@@ -42,3 +42,15 @@
     margin-top: 20px;
 
 }
+
+.error{
+    color: red;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+    margin-right: 60px;
+    display: flex;
+    margin-bottom: -20px;
+    margin-top: 5px;
+   
+}

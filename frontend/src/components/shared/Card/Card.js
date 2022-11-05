@@ -5,8 +5,8 @@ const Card = ({ title, logo, children }) => {
   return (
     <div className={styles.card}>
       <div className={styles.headingWrapper}>
-        <img src={`/images/${logo}.png`} alt={logo} />
-        <h1 className={styles.heading}>{title}</h1>
+        {logo && <img src={`/images/${logo}.png`} alt={logo} />}
+        {title && <h1 className={styles.heading}>{title}</h1>}
       </div>
       {children}
     </div>

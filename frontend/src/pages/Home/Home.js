@@ -22,7 +22,7 @@ const Home = () => {
     <div className={styles.cardWrapper}>
       <Card title="Welcome to InHouse" logo="logo">
         <p className={styles.text}>
-          We’re working hard to get Codershouse ready for everyone! While we
+          We’re working hard to get InHouse ready for everyone! While we
           wrap up the finishing youches, we’re adding people gradually to make
           sure nothing breaks :)
         </p>

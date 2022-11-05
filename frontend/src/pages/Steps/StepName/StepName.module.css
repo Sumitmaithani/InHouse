@@ -24,3 +24,15 @@
 .actionButtonWrap {
     margin-top: 10px;
 }
+
+.error{
+    color: red;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+    margin-right: 60px;
+    display: flex;
+    margin-bottom: -10px;
+    margin-top: 5px;
+   
+  }
