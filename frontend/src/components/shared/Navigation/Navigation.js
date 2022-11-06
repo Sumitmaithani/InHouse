@@ -4,6 +4,7 @@ import { logout } from "../../../http";
 import styles from "./Navigation.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../../../store/authSlice";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 const Navigation = () => {
   const brandstyle = {
@@ -19,7 +20,7 @@ const Navigation = () => {
     marginLeft: "10px",
   };
   const dispatch = useDispatch();
-  const { isAuth } = useSelector((state) => state.auth);
+  const { isAuth, user } = useSelector((state) => state.auth);
 
   async function logoutUser() {
     try {
@@ -36,7 +37,19 @@ const Navigation = () => {
         <img src="/images/logo.png" alt="logo" />
         <span style={logoText}>InHouse</span>
       </Link>
-      {isAuth && <button onClick={logoutUser}>Logout</button>}
+      {isAuth && (
+        <div className={styles.navRight}>
+          <h3>{user?.name}</h3>
+          {user?.avatar && (
+            <Link to="/">
+              <img className={styles.avatar} src={user?.avatar} alt="DP" />
+            </Link>
+          )}
+          <button className={styles.logoutButton} onClick={logoutUser}>
+            <BsFillArrowRightCircleFill className={styles.arrow} />
+          </button>
+        </div>
+      )}
     </nav>
   );
 };

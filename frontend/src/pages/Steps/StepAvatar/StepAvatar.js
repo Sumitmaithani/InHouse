@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../../../components/shared/Button/Button";
 import Card from "../../../components/shared/Card/Card";
 import styles from "./StepAvatar.module.css";
@@ -16,6 +16,7 @@ const StepAvatar = ({ onClick }) => {
   const { name, avatar } = useSelector((state) => state.activate);
   const [img, setImg] = useState("/images/dp.png");
   const [loading, setLoading] = useState(false);
+  //const [unmounted, setUnmounted] = useState(false);
 
   function captureImg(e) {
     const file = e.target.files[0];
@@ -28,8 +29,8 @@ const StepAvatar = ({ onClick }) => {
   }
 
   async function submit() {
-    if(!name || !avatar){
-      return toast.error('Please upload your photo!', {
+    if (!name || !avatar) {
+      return toast.error("Please upload your photo!", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -38,13 +39,16 @@ const StepAvatar = ({ onClick }) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
     }
     setLoading(true);
     try {
       const { data } = await activate({ name, avatar });
       if (data.auth) {
         dispatch(setAuth(data));
+        // if (!unmounted) {
+        //   dispatch(setAuth(data));
+        // }
       }
       console.log(data);
     } catch (err) {
@@ -53,6 +57,12 @@ const StepAvatar = ({ onClick }) => {
       setLoading(false);
     }
   }
+
+  // useEffect(() => {
+  //   return () => {
+  //     setUnmounted(true);
+  //   };
+  // }, []);
 
   if (loading) return <Loader message="Activaion in progress.." />;
   return (
