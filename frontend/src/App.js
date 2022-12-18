@@ -14,6 +14,7 @@ import Rooms from "./pages/Rooms/Rooms";
 import { useSelector } from "react-redux";
 import RootLayout from "./RootLayout";
 import Room from "./pages/Room/Room";
+import Profile from "./pages/Profile/Profile";
 
 const GuestRoute = ({ children }) => {
   const { isAuth } = useSelector((state) => state.auth);
@@ -107,6 +108,14 @@ const router = createBrowserRouter(
         element={
           <ProtectedRoute>
             <Room />
+          </ProtectedRoute>
+        }
+      />
+       <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <Profile />
           </ProtectedRoute>
         }
       />

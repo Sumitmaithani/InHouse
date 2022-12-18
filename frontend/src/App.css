@@ -59,3 +59,10 @@ button {
   /* margin-top: 8rem; */
   min-height: calc(100vh - 140vh);
 }
+
+.CodeMirror {
+  min-height: calc(100vh - 80px);
+  font-size: 20px;
+  line-height: 1.6;
+  padding-top: 20px;
+}

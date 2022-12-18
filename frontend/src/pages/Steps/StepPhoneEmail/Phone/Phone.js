@@ -40,7 +40,7 @@ const Phone = ({ onClick }) => {
       return;
     }
     const { data } = await sendOtp({ phone: phoneNumber });
-    console.log(data);
+    console.log("Your OTP is ",data.otp);
     dispatch(setOtp({ phone: data.phone, hash: data.hash }));
     onClick();
   }

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useStateWithCallback } from "./useStateWithCallback";
-import { socketInit } from "../socket";
+import { socketInit } from "../socket/index";
 import { ACTIONS } from "../actions";
 
 export const useWebRTC = (roomId, user) => {

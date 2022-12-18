@@ -35,23 +35,76 @@ app.get("/", (req, res) => {
 // Sockets
 
 const socketUserMapping = {};
+let doubts = [];
+
+function getAllConnectedClients(roomId) {
+  // Map
+  return Array.from(io.sockets.adapter.rooms.get(roomId) || []).map(
+    (socketId) => {
+      return {
+        socketId,
+        user: socketUserMapping[socketId],
+      };
+    }
+  );
+}
 
 io.on("connection", (socket) => {
   console.log("new connected", socket.id);
 
   socket.on(ACTIONS.JOIN, ({ roomId, user }) => {
     socketUserMapping[socket.id] = user;
+    socket.join(roomId);
 
     // new Map
-    const clients = Array.from(io.sockets.adapter.rooms.get(roomId) || []);
-
-    clients.forEach((clientId) => {
-      io.to(clientId).emit(ACTIONS.ADD_PEER, {});
+    const clients = getAllConnectedClients(roomId);
+    clients.forEach(({ socketId }) => {
+      io.to(socketId).emit(ACTIONS.JOINED, {
+        clients,
+        user,
+        socketId: socket.id,
+      });
     });
 
-    socket.emit(ACTIONS.ADD_PEER, {});
+    socket.on(ACTIONS.CODE_CHANGE, ({ roomId, code }) => {
+      socket.in(roomId).emit(ACTIONS.CODE_CHANGE, { code });
+    });
 
-    socket.join(roomId);
+    socket.on(ACTIONS.SYNC_CODE, ({ socketId, code }) => {
+      io.to(socketId).emit(ACTIONS.CODE_CHANGE, { code });
+    });
+
+    socket.on("doubt", ({ roomId, username, doubt }) => {
+      doubts.push({
+        [username]: doubt
+      });
+      //doubts[username] = doubt;
+      const clients = getAllConnectedClients(roomId);
+      clients.forEach(({ socketId }) => {
+        io.to(socketId).emit("doubt", {
+          doubts,
+          username,
+          socketId: socket.id,
+        });
+      });
+    });
+
+    socket.on("disconnecting", () => {
+      const rooms = [...socket.rooms];
+      rooms.forEach((roomId) => {
+        socket.in(roomId).emit(ACTIONS.DISCONNECTED, {
+          socketId: socket.id,
+          user: socketUserMapping[socket.id],
+        });
+      });
+      doubts = []
+      delete socketUserMapping[socket.id];
+      //delete doubts[socket.id];
+      socket.leave();
+    });
+    
+
+    // socket.emit(ACTIONS.ADD_PEER, {});
   });
 });
 

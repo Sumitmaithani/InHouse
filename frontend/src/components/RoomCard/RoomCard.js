@@ -1,11 +1,16 @@
 import React from "react";
 import styles from "./RoomCard.module.css";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const RoomCard = ({ room }) => {
   const navigate = useNavigate();
   return (
-    <div onClick={()=>{navigate(`/room/${room.id}`)}} className={styles.card}>
+    <div
+      onClick={() => {
+        navigate(`/room/${room.id}`, { state: { roomName: room.topic } });
+      }}
+      className={styles.card}
+    >
       <h3 className={styles.topic}>{room.topic}</h3>
       <div
         className={`${styles.speakers} ${

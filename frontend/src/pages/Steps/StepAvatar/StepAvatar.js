@@ -46,11 +46,7 @@ const StepAvatar = ({ onClick }) => {
       const { data } = await activate({ name, avatar });
       if (data.auth) {
         dispatch(setAuth(data));
-        // if (!unmounted) {
-        //   dispatch(setAuth(data));
-        // }
       }
-      console.log(data);
     } catch (err) {
       console.log(err);
     } finally {
@@ -58,11 +54,6 @@ const StepAvatar = ({ onClick }) => {
     }
   }
 
-  // useEffect(() => {
-  //   return () => {
-  //     setUnmounted(true);
-  //   };
-  // }, []);
 
   if (loading) return <Loader message="Activaion in progress.." />;
   return (

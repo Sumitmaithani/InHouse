@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { logout } from "../../../http";
 import styles from "./Navigation.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { setAuth } from "../../../store/authSlice";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 const Navigation = () => {
+  const location = useLocation();
   const brandstyle = {
     color: "#fff",
     textDecoration: "none",
@@ -31,7 +32,7 @@ const Navigation = () => {
     }
   }
 
-  return (
+  return (<div className={styles.whole_container}>
     <nav className={`${styles.navbar} container`}>
       <Link style={brandstyle} to="/">
         <img src="/images/logo.png" alt="logo" />
@@ -41,16 +42,18 @@ const Navigation = () => {
         <div className={styles.navRight}>
           <h3>{user?.name}</h3>
           {user?.avatar && (
-            <Link to="/">
-              <img className={styles.avatar} src={user?.avatar} alt="DP" />
-            </Link>
+            <img className={styles.avatar} src={user?.avatar} alt="DP" />
           )}
-          <button className={styles.logoutButton} onClick={logoutUser}>
-            <BsFillArrowRightCircleFill className={styles.arrow} />
-          </button>
+          {location?.pathname != "/profile" ? (
+            <button className={styles.logoutButton}>
+              <Link to="/profile">
+                <BsFillArrowRightCircleFill className={styles.arrow} />
+              </Link>
+            </button>
+          ) : null}
         </div>
       )}
-    </nav>
+    </nav></div>
   );
 };
 

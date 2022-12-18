@@ -1,0 +1,96 @@
+.heading_container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.leftBox_inside {
+    min-height: 480px;
+}
+
+.heading {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 7px;
+    border-bottom: 3px solid #0077ff;
+    border-width: 90%;
+}
+
+.subHeading {
+    margin: 3px 10px 3px 5px;
+    font-style: 16px;
+    font-weight: 600;
+}
+
+.leave_button {
+    background: #262626;
+    border-radius: 50px;
+    color: #cc2121;
+    padding: 10px 30px;
+    font-weight: 700;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.9);
+    transition: all 0.3s ease 0s;
+}
+
+.leave_button:hover {
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.9);
+    transform: translateY(-7px);
+}
+
+.user_container {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    margin: 20px 10px;
+}
+
+.user_avatar {
+    border: 3px solid #BB6BD9;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 20px;
+    margin-right: 10px;
+    width: 60px;
+    height: 60px;
+}
+
+.user_name {
+    display: block;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.editormsg_container {
+    display: grid;
+    grid-template-columns: 80% 1fr;
+}
+
+
+.room_container {
+    margin-top: -20px;
+}
+
+.leftbox {
+    float: left;
+    background: #262626;
+    width: 20%;
+    padding: 20px;
+    min-height: calc(100vh - 80px);
+}
+
+.middlebox {
+    float: left;
+    width: 60%;
+    min-height: calc(100vh - 80px);
+}
+
+.rightbox {
+    float: right;
+    background: #262626;
+    width: 20%;
+    min-height: calc(100vh - 80px);
+}
