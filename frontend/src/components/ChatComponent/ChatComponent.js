@@ -22,6 +22,11 @@ const ChatComponent = ({ setDoubt, doubt, allDoubts, askDoubt }) => {
           type="text"
           value={doubt}
           onChange={(e) => setDoubt(e.target.value)}
+          onKeyDown={(event) => {
+            if (event.key == "Enter") {
+              askDoubt()
+            }
+          }}
         />
         <button className={styles.sendBtn} onClick={askDoubt}>
           <img className={styles.btnImg} src="/images/send.png" />

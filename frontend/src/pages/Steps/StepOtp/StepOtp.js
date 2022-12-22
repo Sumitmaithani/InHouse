@@ -9,12 +9,14 @@ import { setAuth } from "../../../store/authSlice";
 import { useDispatch } from "react-redux";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
+import Loader from "../../../components/shared/Loader/Loader";
 
 const StepOtp = ({ onClick }) => {
   const [otp, setOtp] = useState("");
   const { phone, hash } = useSelector((state) => state.auth.otp);
   const [error, setError] = useState("false");
   const [errorMsg, setErrorMsg] = useState("");
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const digits_only = (string) =>
@@ -43,8 +45,10 @@ const StepOtp = ({ onClick }) => {
       return;
     }
     try {
+      setLoading(true);
       const { data } = await verifyOtp({ otp, phone, hash });
       dispatch(setAuth(data));
+      setLoading(false);
     } catch (err) {
       console.log(err);
       if (err.response.status == 400) {
@@ -58,36 +62,48 @@ const StepOtp = ({ onClick }) => {
           progress: undefined,
           theme: "light",
         });
+        setLoading(false);
       }
     }
   }
 
   return (
     <>
-      <div className={styles.cardWrapper}>
-        <Card title="Enter the code we just texted you" logo="lock">
-          <TextInput
-            value={otp}
-            onChange={(e) => {
-              setOtp(e.target.value);
-              setError("false");
-            }}
-            error={error}
-          />
-          {error == "true" && (
-            <div className={styles.error}>
-              <AiOutlineInfoCircle style={{ marginRight: "5px" }} />
-              {errorMsg}
+      {loading ? (
+        <div>
+          <Loader message="Loading, please wait.." />
+        </div>
+      ) : (
+        <div className={styles.cardWrapper}>
+          <Card title="Enter the code we just texted you" logo="lock">
+            <TextInput
+              value={otp}
+              onChange={(e) => {
+                setOtp(e.target.value);
+                setError("false");
+              }}
+              error={error}
+              onKeyDown={(event) => {
+                if (event.key == "Enter") {
+                  submit();
+                }
+              }}
+            />
+            {error == "true" && (
+              <div className={styles.error}>
+                <AiOutlineInfoCircle style={{ marginRight: "5px" }} />
+                {errorMsg}
+              </div>
+            )}
+            <p className={styles.bottomParagraph}>
+              Didn’t receive? Tap to resend
+            </p>
+            <div className={styles.actionButtonWrap}>
+              <Button onClick={submit} text="Next" />
             </div>
-          )}
-          <p className={styles.bottomParagraph}>
-            Didn’t receive? Tap to resend
-          </p>
-          <div className={styles.actionButtonWrap}>
-            <Button onClick={submit} text="Next" />
-          </div>
-        </Card>
-      </div>
+          </Card>
+        </div>
+      )}
     </>
   );
 };

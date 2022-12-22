@@ -23,7 +23,7 @@ class ActivateController {
         .resize(150, Jimp.AUTO)
         .write(path.resolve(__dirname, `../storage/${imagePath}`));
     } catch (err) {
-     return res.status(500).json({ message: "Could not process the image" });
+      return res.status(500).json({ message: "Could not process the image" });
     }
 
     const userId = req.user._id;

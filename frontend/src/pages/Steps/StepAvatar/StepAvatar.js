@@ -14,7 +14,7 @@ const StepAvatar = ({ onClick }) => {
   const dispatch = useDispatch();
 
   const { name, avatar } = useSelector((state) => state.activate);
-  const [img, setImg] = useState("/images/dp.png");
+  const [img, setImg] = useState("/images/dp1.png");
   const [loading, setLoading] = useState(false);
   //const [unmounted, setUnmounted] = useState(false);
 

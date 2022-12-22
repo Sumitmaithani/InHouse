@@ -48,6 +48,11 @@ const StepName = ({ onClick }) => {
             }}
             placeholder="Your name"
             error={error}
+            onKeyDown={(event) => {
+              if (event.key == "Enter") {
+                nextStep();
+              }
+            }}
           />
           {error == "true" && (
             <div className={styles.error}>

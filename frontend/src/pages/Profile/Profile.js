@@ -31,7 +31,7 @@ const Profile = () => {
           <div className={styles.usernames}>
             <h3>{user?.name}</h3>
             <h3 className={styles.userhandle}>
-              @{user?.name.toLowerCase().replace(/\s/g, "")}
+              @{user?.name?.toLowerCase().replace(/\s/g, "")}
             </h3>
           </div>
           <button className={styles.follow_button}>following</button>

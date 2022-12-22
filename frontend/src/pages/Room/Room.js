@@ -102,7 +102,7 @@ const Room = () => {
       <div className={styles.room_container}>
         <div className={styles.leftbox}>
           <div className={styles.leftBox_inside}>
-            <h1 className={styles.heading}>{location.state.roomName}</h1>
+            <h1 className={styles.heading}>{location?.state?.roomName}</h1>
             <div className={styles.subHeading}>All connected clients :</div>
             {clients?.map((client) => {
               return (
