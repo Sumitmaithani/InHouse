@@ -56,14 +56,14 @@ Here are the five challenges we faced while building the InHouse project, along 
 ## Screnshots
 
 <p>
-<img src="https://user-images.githubusercontent.com/86047367/211190376-0eff44f1-18af-4ddd-918a-746ff488c45c.png" width=500 />
-<img src="https://user-images.githubusercontent.com/86047367/211190380-00e101bf-7b50-4092-8eed-0f24f0e0f214.png" width=500 />
+<img src="https://user-images.githubusercontent.com/86047367/211190376-0eff44f1-18af-4ddd-918a-746ff488c45c.png" width=410 />
+<img src="https://user-images.githubusercontent.com/86047367/211190380-00e101bf-7b50-4092-8eed-0f24f0e0f214.png" width=410 />
 <p>
 <p>
-<img src="https://user-images.githubusercontent.com/86047367/211190390-1d533087-2f29-4e62-b06a-5fff46216c06.png" width=500 />
-<img src="https://user-images.githubusercontent.com/86047367/211190392-4a5d4bd6-c296-4789-a6c9-af922d249540.png" width=500 />
+<img src="https://user-images.githubusercontent.com/86047367/211190390-1d533087-2f29-4e62-b06a-5fff46216c06.png" width=410 />
+<img src="https://user-images.githubusercontent.com/86047367/211190392-4a5d4bd6-c296-4789-a6c9-af922d249540.png" width=410 />
 <p>
 <p>
-<img src="https://user-images.githubusercontent.com/86047367/211190526-91715dcb-c0ef-4f85-98b9-c7e02c9c8e42.png" width=500 />
-<img src="https://user-images.githubusercontent.com/86047367/211190396-d2e1a5e2-e0cc-4786-b419-164c4bac16a9.png" width=500 />
+<img src="https://user-images.githubusercontent.com/86047367/211190526-91715dcb-c0ef-4f85-98b9-c7e02c9c8e42.png" width=410 />
+<img src="https://user-images.githubusercontent.com/86047367/211190396-d2e1a5e2-e0cc-4786-b419-164c4bac16a9.png" width=410 />
 <p>
