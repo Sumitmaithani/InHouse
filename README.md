@@ -1,7 +1,7 @@
-##### InHouse
+# InHouse
 "Collaborate and code in real-time with InHouse, the fast and focussed platform for peer-to-peer coding sessions."
 
-#### The problem InHouse solves
+## The problem InHouse solves
 InHouse is a platform that aims to solve the problem of collaborating on code and code-pairing remotely. It offers a way for developers to work on code together in real-time, similar to using a tool like Visual Studio Code, but with a focus on being lightweight and easy to use. It also includes text messaging functionality, which can be helpful for communicating and coordinating during a code-pairing session. Some of the specific problems that InHouse aims to solve include:
 
 1.Difficulties collaborating remotely: InHouse makes it easier for developers to collaborate on code and work on projects together, even when they are not in the same physical location. It's a great way to overcome the challenges of working remotely and stay connected with team members.
@@ -12,7 +12,7 @@ InHouse is a platform that aims to solve the problem of collaborating on code an
 
 4.Limited collaboration options: InHouse allows developers to create both public and private rooms, which gives them the flexibility to choose who they want to collaborate with. It also supports multiple users, which makes it easier for teams to work together and share ideas.
 
-#### Challenges I ran into
+## Challenges I ran into
 Here are the five challenges we faced while building the InHouse project, along with potential solutions:
 
 1.Deciding on the technologies to use: We faced the challenge of deciding on the technologies to use for the InHouse project. To address this challenge, we held a brainstorming session with our team or stakeholders to discuss the various options and consider their pros and cons. We also did research on the available technologies and their suitability for the project.
@@ -25,15 +25,24 @@ Here are the five challenges we faced while building the InHouse project, along 
 
 5.Ensuring a smooth user experience: In a real-time code collaboration tool like InHouse, it is important to ensure that the user experience is smooth and seamless. We faced the challenge of ensuring a smooth user experience. To address this challenge, we focused on optimizing performance and reducing latency. We also tested the tool thoroughly and addressed any issues or bugs that were discovered. By paying close attention to the user experience, we were able to deliver a high-quality product that meets the needs of our users.
 
-#### Technologies I used
+## Technologies I used
 
 • React
+
 • Redux
+
 • codemirror
+
 • Node.js
+
 • Express.js
+
 • MongoDB
+
 • Socket.IO
+
 • JWT
+
 • CI/CD
+
 • Twilio
