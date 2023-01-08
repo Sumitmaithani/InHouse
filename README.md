@@ -1,6 +1,10 @@
 # InHouse
 "Collaborate and code in real-time with InHouse, the fast and focussed platform for peer-to-peer coding sessions."
 
+<p>
+<img src="https://user-images.githubusercontent.com/86047367/211190221-2ea5ad86-a7c2-4ed2-8007-5793815b1cd5.png" width=1000 />
+<p>
+
 ## The problem InHouse solves
 InHouse is a platform that aims to solve the problem of collaborating on code and code-pairing remotely. It offers a way for developers to work on code together in real-time, similar to using a tool like Visual Studio Code, but with a focus on being lightweight and easy to use. It also includes text messaging functionality, which can be helpful for communicating and coordinating during a code-pairing session. Some of the specific problems that InHouse aims to solve include:
 
@@ -46,3 +50,18 @@ Here are the five challenges we faced while building the InHouse project, along 
 • CI/CD
 
 • Twilio
+
+## Screnshots
+
+<p>
+<img src="https://user-images.githubusercontent.com/86047367/211190376-0eff44f1-18af-4ddd-918a-746ff488c45c.png" width=500 />
+<img src="https://user-images.githubusercontent.com/86047367/211190380-00e101bf-7b50-4092-8eed-0f24f0e0f214.png" width=500 />
+<p>
+<p>
+<img src="https://user-images.githubusercontent.com/86047367/211190390-1d533087-2f29-4e62-b06a-5fff46216c06.png" width=500 />
+<img src="https://user-images.githubusercontent.com/86047367/211190392-4a5d4bd6-c296-4789-a6c9-af922d249540.png" width=500 />
+<p>
+<p>
+<img src="https://user-images.githubusercontent.com/86047367/211190526-91715dcb-c0ef-4f85-98b9-c7e02c9c8e42.png" width=500 />
+<img src="https://user-images.githubusercontent.com/86047367/211190396-d2e1a5e2-e0cc-4786-b419-164c4bac16a9.png" width=500 />
+<p>
