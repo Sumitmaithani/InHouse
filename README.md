@@ -1,5 +1,5 @@
 # InHouse
-website link : https://inhouse-thz1.onrender.com
+website link : [https://inhouse-web.vercel.app](https://inhouse-web.vercel.app)
 
 "Collaborate and code in real-time with InHouse, the fast and focussed platform for peer-to-peer coding sessions."
 
